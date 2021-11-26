@@ -17,6 +17,8 @@ app.use(bodyParser.urlencoded({extended:true}));
 app.get("/", (req,res) =>{
     res.json({message:"Bienvenue !"});
 })
+require("/routes/auth.routes")(app);
+require("/routes/user.routes")(app);
 app.listen(3000, ()=>{
     console.log("Le serveur écoute sur le port 3000");
 });
