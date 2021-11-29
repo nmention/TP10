@@ -9,6 +9,12 @@ module.exports = function(app){
         );
         next();
     });
-    app.post("/auth/signup", verifySignUp.checkDuplicateUsername, controller.signup);
-    app.post("/auth/signin",controller.signin);
+    app.post(
+        "/auth/signup",
+        [
+            verifySignUp.checkDuplicateUsername,
+        ],
+        controller.signup
+    );
+    app.post("/auth/signin", controller.signin);
 };

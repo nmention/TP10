@@ -9,6 +9,10 @@ module.exports = function(app){
         );
         next();
     });
-    app.get("/test/all", controller.accessAll);
-    app.get("/test/user",controller.signin);
+    app.get("/test/all", controller.allAccess);
+    app.get(
+        "/test/user",
+        [authJwt.verifyToken],
+        controller.userAccess
+    );
 };
